@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
 
     # update
     sudo apt-get update
-    sudo apt-get upgrade
+    sudo apt-get --yes upgrade
 
     # install dependencies for node-canvas
     sudo apt-get install --yes libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
@@ -35,8 +35,8 @@ Vagrant.configure(2) do |config|
     # add PATH to .bashrc
     echo 'export PATH=$HOME/.nodebrew/current/bin:$PATH' >> $HOME/.bashrc
 
-    # install node.js
-    nodebrew install-binary stable
+    # install node.js, progress send to /dev/null
+    nodebrew install-binary stable 2>/dev/null
 
     # set node.js
     nodebrew use stable
